@@ -1,46 +1,30 @@
 import React from 'react';
-import './App.css';
+
+import Navigation from './components/Navigation';
+import "bootstrap/dist/css/bootstrap.min.css"
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { Home } from "./components/Home"
+import { MariShop } from "./components/MariShop"
+import { Mokoko } from "./components/Mokoko"
+import { MarketTracker } from "./components/MarketTracker"
+import "./App.css"
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
     <div>
-      <header className="App-header">
-        <h1 className="App-title">
-          You found a mokoko seed
-        </h1>
-        <ImageRenderer url="https://assets.maxroll.gg/wordpress/LA_Mokko_Seed.png" />
-      </header>
+      <Navigation />
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/Mokoko" element={<Mokoko />}/>
+          <Route path="/MariShop" element={<MariShop />}/>
+          <Route path="/MarketTracker" element={<MarketTracker />}/>
+        </Routes>
+      </div>
     </div>
-    </>
+    </BrowserRouter>
   );
-}
-
-class ImageRenderer extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        clicked : false
-      }
-    }
-
-    imageClick = () => {
-      let sound = new Audio("./MokokoSound.mp3")
-      this.setState({clicked : true});
-      sound.play()
-    }
-
-    render () {
-      const clicked = this.state.clicked;
-      if (clicked) {
-        return null;
-      }
-
-      return (
-        <img src={this.props.url} onClick={this.imageClick} alt="mokoko seed" className="App-displayImg"/>
-      );
-    };
-  
 }
 
 export default App;
