@@ -5,7 +5,8 @@ export class MariShop extends Component {
     render() {
         return (
         <div>
-            <ProductTable marketTable={marketTable}/>
+            <InputForm />
+            <ProductTable marketTable={marketTable} />
         </div>
         );
     }
@@ -56,13 +57,45 @@ class ProductRow extends Component {
     }
 }
 
+class InputForm extends Component {
+    render() {
+        return (
+            <form>
+                <input className='filter' type="text" placeholder='Filter by name...' />
+                <input className='crystal' type="number" placeholder='Crystal price' />
+            </form>
+        );
+    }
+}
+
+function GoldPerCrystal(cost) {
+    return (cost / 95)
+}
+
+function MarketPrice(item) {
+    return (item.MarketPrice / item.quantity)
+}
+
+function MariPrice(item) {
+    const gpc = GoldPerCrystal(400)
+    return (item.price / item.quantity) * gpc
+}
+
 const marketTable = [
     {
         name: "Guardian Stone",
-        quantity: "10"
+        quantity: 10
     },
     {
         name: "Destruction Stone",
-        quantity: "10"
+        quantity: 10
     }
 ];
+
+const mariTable = [
+    {
+        name: "Guardian Stone",
+        quantity: 800,
+        price: 240
+    }
+]
