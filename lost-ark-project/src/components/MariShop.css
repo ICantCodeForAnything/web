@@ -1,0 +1,29 @@
+.table, th, td {
+    border: 2px solid rgb(207, 199, 199);
+}
+
+.table {
+    position: sticky;
+    border-spacing: 5px;
+    margin-top: 4%;
+    table-layout: fixed;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.td, th {
+    color: rgb(207, 196, 196);
+}
+
+.crystal {
+    position: absolute;
+    bottom: 89%;
+    left: 70%;
+}
+
+.filter {
+    position: absolute;
+    bottom: 89%;
+    left: 15%;
+}
