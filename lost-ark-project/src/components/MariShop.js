@@ -63,11 +63,13 @@ class ProductTable extends Component {
         const crystalPrice = this.props.crystalPrice
 
         const rows = []
-        this.props.itemTable.map((item) => {
+
+        this.props.itemTable.forEach(item => {
             if (item.name.toLowerCase().includes(filterText.toLowerCase())) {
                 rows.push(<ProductRow item={item} crystalPrice={crystalPrice} />)
             }
-        }); 
+        });
+
         return (
             <table className='table'>
             <thead>
@@ -167,9 +169,6 @@ class InputForm extends Component {
 }
 
 function GoldPerCrystal(cost) {
-    const val = parseInt(cost) / 95
-    console.log(cost)
-    console.log(parseFloat(cost) / 95)
     return (parseInt(cost) / 95)
 }
 
